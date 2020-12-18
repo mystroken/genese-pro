@@ -210,3 +210,12 @@ function genese_javascript_detection() {
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 }
 add_action( 'wp_head', 'genese_javascript_detection', 0 );
+
+/**
+ * For development purposes
+ * Allow all origin
+ */
+function add_cors_http_header(){
+    header("Access-Control-Allow-Origin: *");
+}
+add_action('init','add_cors_http_header');

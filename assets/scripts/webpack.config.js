@@ -4,7 +4,7 @@ const webpack = require( 'webpack' );
 const WriteFilePlugin = require( 'write-file-webpack-plugin' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
-const { PATHS, HOST, PORT, THEME_NAME, PROXY_TARGET } = require( '..config' );
+const { PATHS, HOST, PORT, THEME_NAME, PROXY_TARGET } = require( '../config' );
 
 const ENV = 'development';
 const WATCH = global.watch || false;

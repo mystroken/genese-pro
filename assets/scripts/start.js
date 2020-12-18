@@ -1,6 +1,5 @@
 global.watch = true;
 
-const path = require( 'path' );
 const fs = require( 'fs-extra' );
 const browserSync = require( 'browser-sync' ).create();
 const webpack = require( 'webpack' );
@@ -10,26 +9,10 @@ const htmlInjector = require( 'bs-html-injector' );
 const webpackConfig = require( './webpack.config' );
 
 const bundler = webpack( webpackConfig );
-const { PATHS, PROXY_TARGET } = require( './config' );
+const { PATHS, PROXY_TARGET } = require( '../config' );
 
 
 const bsOptions = {
-	files: [
-		{
-
-			// scss|js managed by webpack
-			// optionally exclude other managed assets: images, fonts, etc
-			// match: [
-			// 	`${PATHS.base()}/*.php`,
-			// 	`${PATHS.base()}/**/*.php`,
-			// 	`${PATHS.base()}/**/**/*.php`
-			// ]//,
-
-			// manually sync everything else
-			// fn: synchronize
-
-		}
-	],
 	proxy: {
 
 		// proxy local WP install
@@ -55,15 +38,6 @@ const bsOptions = {
 browserSync.use( htmlInjector, {
 	restrictions: [ '#page' ]
 });
-
-
-function synchronize( event, file ) {
-
-	// activate html injector
-	if ( file.endsWith( 'php' ) ) {
-		htmlInjector();
-	}
-}
 
 fs.emptyDir( PATHS.compiled(), () => (
 	browserSync.init( bsOptions )
