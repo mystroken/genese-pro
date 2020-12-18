@@ -6,6 +6,6 @@ module.exports = {
 	proxy: {
 		'/' : 'localhost:8080'
 	},
-	// contentBase: path.resolve( __dirname, 'js' ),
-	publicPath: 'http://localhost:3000/wp-content/themes/genese/'
+	contentBase: './assets/dist/',
+	publicPath: 'http://localhost:8080/wp-content/themes/genese/assets/dist/'
 };

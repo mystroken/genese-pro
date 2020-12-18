@@ -1,8 +1,16 @@
 /* eslint-disable no-undef */
-import clamp from '@mystroken/g/clamp';
-// console.log(clamp(2, 5, 9));
-document.body.style.background = 'green';
+document.body.style.background = 'red';
 
-if ( typeof module === 'object' && module.hot ) {
-	module.hot.accept();
+// if ( typeof module === 'object' && module.hot ) {
+// 	module.hot.accept();
+// }
+
+// `import.meta` is (proposed) ES standard: this test should work in ES enabled
+// environment, even when the hot plugin is not here (obviously, import.meta.hot
+// will be falsy in this case, and this HMR-specific block will be skipped)
+if (import.meta.hot) {
+
+  // accept hot updates (without any special treatment)
+  import.meta.hot.accept()
+
 }

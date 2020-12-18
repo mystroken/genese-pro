@@ -4,7 +4,7 @@ const webpack = require( 'webpack' );
 const WriteFilePlugin = require( 'write-file-webpack-plugin' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
-const { PATHS, HOST, PORT, THEME_NAME, PROXY_TARGET } = require( '../config' );
+const { PATHS, HOST, PORT, THEME_NAME, PROXY_TARGET } = require( '../../config' );
 
 const ENV = 'development';
 const WATCH = global.watch || false;
@@ -37,15 +37,15 @@ module.exports = {
 					loader: 'babel-loader'
 				}
 			},
-			// {
-			// 	test: /\.(sa|sc|c)ss$/,
-			// 	use: [
-			// 		( 'production' === ENV ) ? MiniCssExtractPlugin.loader : 'style-loader',
-			// 		'css-loader?importLoaders=1',
-			// 		'postcss-loader',
-			// 		'sass-loader'
-			// 	]
-			// }
+			{
+				test: /\.(sa|sc|c)ss$/,
+				use: [
+					'style-loader',
+					'css-loader?importLoaders=1',
+					'postcss-loader',
+					'sass-loader'
+				]
+			}
 		]
 	},
 
@@ -67,7 +67,7 @@ function getEntry() {
 	const entry = {};
 	let proxyURL = `http://${HOST}:${PORT}`;
 	entry.app = [ PATHS.src( 'js', 'app.js' ) ];
-	// entry.app.push( PATHS.src( 'sass', 'style.scss' ) );
+	entry.app.push( PATHS.src( 'sass', 'style.scss' ) );
 
 	/**
 	 * We do this to enable injection over SSL.

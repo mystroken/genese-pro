@@ -9,7 +9,7 @@ const htmlInjector = require( 'bs-html-injector' );
 const webpackConfig = require( './webpack.config' );
 
 const bundler = webpack( webpackConfig );
-const { PATHS, PROXY_TARGET } = require( '../config' );
+const { PATHS, PROXY_TARGET } = require( '../../config' );
 
 
 const bsOptions = {
