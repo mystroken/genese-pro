@@ -6,10 +6,10 @@ module.exports = {
 	HOST: 'localhost',
 	PORT: 3000,
 	PATHS: {
-		src: unipath( path.resolve( __dirname, '../js/src' ) ),
-		compiled: unipath( path.resolve( __dirname, '../dist' ) ),
+		src: unipath( path.resolve( __dirname, 'src' ) ),
+		compiled: unipath( path.resolve( __dirname, 'dist' ) ),
 		modules: unipath( 'node_modules' ),
-		base: unipath( '.' )
+		base: unipath( '.' ),
 	}
 };
 

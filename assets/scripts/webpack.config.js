@@ -4,7 +4,7 @@ const webpack = require( 'webpack' );
 const WriteFilePlugin = require( 'write-file-webpack-plugin' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
-const { PATHS, HOST, PORT, THEME_NAME, PROXY_TARGET } = require( './config' );
+const { PATHS, HOST, PORT, THEME_NAME, PROXY_TARGET } = require( '..config' );
 
 const ENV = 'development';
 const WATCH = global.watch || false;
@@ -15,7 +15,7 @@ module.exports = {
 
 	output: {
 		path: PATHS.compiled(),
-		publicPath: `//${HOST}:${PORT}/wp-content/themes/${THEME_NAME}/`,
+		publicPath: `//${HOST}:${PORT}/wp-content/themes/${THEME_NAME}/assets/dist/`,
 		filename: 'js/[name].js',
 		sourceMapFilename: '[file].map'
 	},
@@ -66,7 +66,7 @@ module.exports = {
 function getEntry() {
 	const entry = {};
 	let proxyURL = `http://${HOST}:${PORT}`;
-	entry.app = [ PATHS.src( 'index.js' ) ];
+	entry.app = [ PATHS.src( 'js', 'app.js' ) ];
 	// entry.app.push( PATHS.src( 'sass', 'style.scss' ) );
 
 	/**

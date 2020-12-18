@@ -150,16 +150,15 @@ if ( ! function_exists( 'genese_enqueue_scripts' ) ) :
 
 		wp_enqueue_script(
 			'genese-script',
-//			get_theme_file_uri( '/js/app.js' ),
-			get_template_directory_uri() . '/js/app.js',
+			get_theme_file_uri( '/assets/dist/js/app.js' ),
 			array( 'jquery' ),
-			filemtime( get_template_directory_uri() . '/js/app.js' ),
+			filemtime( get_template_directory_uri() . '/assets/dist/js/app.js' ),
 			true
 		);
 
 		wp_enqueue_script(
 			'genese-navigation',
-			get_template_directory_uri() . '/js/navigation.js',
+			get_template_directory_uri() . '/assets/dist/js/navigation.js',
 			array(),
 			$theme->get( 'Version' ),
 			true
