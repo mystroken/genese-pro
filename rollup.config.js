@@ -1,14 +1,22 @@
-import path from 'path'
+// import sass from 'node-sass'
+import {terser} from 'rollup-plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import babel from 'rollup-plugin-babel'
+import del from 'rollup-plugin-delete'
 import hmr from 'rollup-plugin-hot'
 import postcss from 'rollup-plugin-postcss-hot'
 
-// NOTE we're using the same instance of the HMR server to serve our multiple
-// builds -- this works because they all use the same public directory, and they
-// don't step on each other's toes by trying to write to the same output files
+// Since we use nollup for dev and rollup for build,
+// We could assume that prod is the abscense of nollup
+const production = process.env.NODE_ENV === 'production'
+const format = process.env.NOLLUP ? 'esm' : 'iife'
+
+// Hot Module Replacement (HMR) exchanges,
+// adds, or removes modules while an application
+// is running, without a full reload.
 const hot = hmr({
+  enabled: !production,
   public: './assets/dist/',
   clearConsole: false,
   inMemory: true,
@@ -16,33 +24,64 @@ const hot = hmr({
   openPort: 5000,
 })
 
-const format = process.env.NOLLUP ? 'esm' : 'iife'
 
-export default {
-	input: './assets/src/js/app.js',
-	output: {
-    sourcemap: true,
-    format,
-    file: 'assets/dist/js/app.js',
+
+
+export default [
+  {
+    input: './assets/src/js/app.js',
+    output: {
+      format,
+      sourcemap: !production,
+      file: './assets/dist/js/app.js',
+    },
+    // our example contains dynamic imports (because we want to test them with
+    // HMR!), so we need this option to be able to build to an iife
+    inlineDynamicImports: true,
+    plugins: [
+      // Delete files and folders using Rollup.
+      production && del({ targets: './assets/dist/*' }),
+      // support modules from node_modules.
+      resolve(),
+      // support of require.
+      commonjs({ include: 'node_modules/**' }),
+      // Babel converts ECMAScript 2015+ code into
+      // a backwards compatible version of JavaScript in current
+      // and older browsers or environments.
+      babel(),
+      // Hot Module Replacement (HMR) exchanges,
+      // adds, or removes modules while an application
+      // is running, without a full reload.
+      hot,
+      // A JavaScript parser and
+      // mangler/compressor toolkit for ES6+.
+      production && terser(),
+    ],
+
+    watch: { clearScreen: false },
   },
-  // our example contains dynamic imports (because we want to test them with
-  // HMR!), so we need this option to be able to build to an iife
-  inlineDynamicImports: true,
-  plugins: [hot],
-  watch: {
-    clearScreen: false,
+
+  // // postcss
+  {
+    input: './assets/src/postcss/main.js',
+    output: {
+      sourcemap: !production,
+      format,
+      file: './assets/dist/css/main.js',
+    },
+    plugins: [
+      // PostCss should be used before commonjs
+      // Or it will try to interpret the content of CSS
+      // file as JavaScript.
+      postcss({
+        hot: !production,
+        sourceMap: !production,
+        extract: 'style.css',
+        extensions: ['.scss', '.css'],
+        loaders: ['sass'],
+      }),
+      hot
+    ],
+    watch: { clearScreen: false },
   },
-
-	// Plugins
-	// plugins: [
-
-	// 	// resolve(), // support modules from node_modules.
-	// 	// commonjs({ // support of require.
-	// 	// 	include: 'node_modules/**',
-	// 	// }),
-	// 	// babel({
-	// 	// 	babelrc: false,
-	// 	// 	presets: [['@babel/preset-env', { 'modules': false }]]
-	// 	// }),
-	// ]
-}
+]
