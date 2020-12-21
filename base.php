@@ -56,6 +56,7 @@
 	<?php get_footer(); ?>
 
 </div><!-- #app -->
+<div id="loader"></div><!-- #loader -->
 <noscript><div class="issue-js"><?php echo __('Please enable JavaScript to view this website.', 'genese'); ?></div></noscript>
 
 <?php wp_footer(); ?>

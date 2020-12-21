@@ -98,11 +98,14 @@ if ( ! function_exists( 'genese_setup' ) ) :
 		 */
 		add_theme_support(
 			'custom-logo',
-			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => false,
-				'flex-height' => false,
+			apply_filters(
+				'genese_custom_logo_args',
+				array(
+					'height'      => 110,
+					'width'       => 470,
+					'flex-width'  => true,
+					'flex-height' => true,
+				)
 			)
 		);
 	}

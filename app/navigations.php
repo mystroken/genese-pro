@@ -19,9 +19,11 @@
  */
 $nav_menus = array(
 	// Primary Navigation.
-	'primary' => __( 'Primary Navigation', 'genese' ),
+	'primary'  => __( 'Primary Navigation', 'genese' ),
+	// Handheld Navigation.
+	'handheld' => __( 'Handheld Navigation', 'genese' ),
 	// Footer Navigation.
-	'footer'  => __( 'Footer Navigation', 'genese' ),
+	'footer'   => __( 'Footer Navigation', 'genese' ),
 );
 
 // Don't touch this line.
