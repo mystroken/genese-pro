@@ -10,7 +10,7 @@
  */
 
 ?>
-<header id="masthead" class="site-header">
+<header id="header" class="header">
 	<div class="site-branding">
 		<?php
 		the_custom_logo();
@@ -35,10 +35,10 @@
 		<?php
 		wp_nav_menu(
 			array(
-				'theme_location' => 'menu-1',
+				'theme_location' => 'primary',
 				'menu_id'        => 'primary-menu',
 			)
 		);
 		?>
 	</nav><!-- #site-navigation -->
-</header><!-- #masthead -->
+</header><!-- #header -->

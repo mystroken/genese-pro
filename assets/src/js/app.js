@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-document.body.style.background = 'maroon'
+// document.body.style.background = 'maroon';
 
 if ( typeof module === 'object' && module.hot ) {
 	module.hot.accept();

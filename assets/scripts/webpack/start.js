@@ -37,8 +37,6 @@ const bsOptions = {
 // otherwise, it will replace the webpack HMR scripts
 browserSync.use( htmlInjector, {
 	restrictions: [ '#page' ]
-});
+})
 
-fs.emptyDir( PATHS.compiled(), () => (
-	browserSync.init( bsOptions )
-) );
+browserSync.init( bsOptions )

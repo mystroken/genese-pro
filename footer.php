@@ -11,7 +11,15 @@
 
 ?>
 
-<footer id="colophon" class="site-footer">
+<footer id="footer" class="footer">
+	<?php
+		wp_nav_menu(
+			array(
+				'theme_location' => 'footer',
+				'menu_id'        => 'footer-menu',
+			)
+		);
+		?>
 	<div class="site-info">
 		<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'genese' ) ); ?>">
 			<?php
@@ -25,4 +33,4 @@
 			printf( esc_html__( 'Theme: %1$s by %2$s.', 'genese' ), 'genese', '<a href="https://www.flexyla.com">FlexyLa Studio</a>' );
 			?>
 	</div><!-- .site-info -->
-</footer><!-- #colophon -->
+</footer><!-- #footer -->

@@ -26,13 +26,13 @@
 </head>
 <body <?php body_class(); ?> role="document" itemscope itemtype="http://schema.org/WebPage">
 <?php wp_body_open(); ?>
-<div id="page" class="site">
+<div id="app">
 
 	<?php get_header(); ?>
 
-	<div id="content" class="site__content">
+	<main id="main" class="main" role="main" itemprop="mainContentOfPage">
 
-		<main id="main" class="site__main" role="main" itemprop="mainContentOfPage">
+		<div id="content" class="content">
 		<?php
 
 		/*
@@ -40,7 +40,7 @@
 		 */
 		require genese_template_path();
 		?>
-		</main><!-- .site__main -->
+		</div><!-- #content -->
 
 		<?php
 
@@ -51,11 +51,12 @@
 		get_sidebar();
 		?>
 
-	</div><!-- .site__content -->
+	</main><!-- #main -->
 
 	<?php get_footer(); ?>
 
-</div><!-- .site -->
+</div><!-- #app -->
+<noscript><div class="issue-js"><?php echo __('Please enable JavaScript to view this website.', 'genese'); ?></div></noscript>
 
 <?php wp_footer(); ?>
 </body>
