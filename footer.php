@@ -12,14 +12,16 @@
 ?>
 
 <footer id="footer" class="footer">
-	<?php
-		wp_nav_menu(
-			array(
-				'theme_location'  => 'footer',
-				'container_class' => 'footer-navigation',
-			)
-		);
-		?>
+	<nav id="footer-nav" class="footer-navigation" role="navigation" aria-label="<?php esc_html_e( 'Footer Navigation', 'genese' ); ?>">
+		<?php
+			wp_nav_menu(
+				array(
+					'theme_location'  => 'footer',
+					'container' => '',
+				)
+			);
+			?>
+	</nav>
 	<div class="site-info">
 		<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'genese' ) ); ?>">
 			<?php

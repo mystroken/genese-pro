@@ -44,6 +44,11 @@ if ( ! function_exists( 'genese_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
+		/**
+		 * Add support for Block Styles.
+		 */
+		add_theme_support( 'wp-block-styles' );
+
 		/*
 		 * Register menus
 		 *
@@ -101,8 +106,8 @@ if ( ! function_exists( 'genese_setup' ) ) :
 			apply_filters(
 				'genese_custom_logo_args',
 				array(
-					'height'      => 110,
-					'width'       => 470,
+					'height'      => 42,
+					'width'       => 284,
 					'flex-width'  => true,
 					'flex-height' => true,
 				)

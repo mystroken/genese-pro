@@ -31,27 +31,26 @@
 	<?php get_header(); ?>
 
 	<main id="main" class="main" role="main" itemprop="mainContentOfPage">
+		<div class="container">
+			<div id="content" class="content">
+				<?php
 
-		<div id="content" class="content">
-		<?php
+					/*
+					 * Get the right WordPress template file.
+					 */
+					require genese_template_path();
+					?>
+			</div><!-- #content -->
+			<?php
 
-		/*
-		 * Get the right WordPress template file.
-		 */
-		require genese_template_path();
-		?>
-		</div><!-- #content -->
-
-		<?php
-
-		/*
-		 * Include the site sidebar.
-		 * Even if you don't need a sidebar, do not remove this line.
-		 */
-		get_sidebar();
-		?>
-
-	</main><!-- #main -->
+				/*
+				 * Include the site sidebar.
+				 * Even if you don't need a sidebar, do not remove this line.
+				 */
+				get_sidebar();
+				?>
+		</div>
+	</main>
 
 	<?php get_footer(); ?>
 

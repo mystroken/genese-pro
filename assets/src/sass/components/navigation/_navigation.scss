@@ -1,0 +1,41 @@
+.primary-navigation,
+.handheld-navigation,
+.footer-navigation {
+  .menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.primary-navigation {
+  display: none;
+  @media (min-width: $screen-medium-up) {
+    display: block;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  .menu-item:not(:last-of-type) > a {
+    padding-right: 1.5rem;
+  }
+
+}
+
+.handheld-navigation {
+  @extend .container;
+  display: none;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  z-index: 1000;
+  @media (min-width: $screen-medium-up) {
+    display: none;
+  }
+}
