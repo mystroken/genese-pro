@@ -52,7 +52,10 @@
 @import "layouts/container";
 @import "layouts/announcement-bar";
 @import "layouts/header";
+@import "layouts/content";
+@import "layouts/footer";
 @import "layouts/hamburger";
+@import "layouts/hero";
 // @import "layouts/sidebar-content"; // Uncomment this line for a sidebar on left side of your content.
 
 /*--------------------------------------------------------------
@@ -79,3 +82,5 @@
 /* Alignments
 --------------------------------------------- */
 @import "utilities/alignments";
+
+@import "woocommerce";

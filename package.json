@@ -17,7 +17,8 @@
     "url": "https://github.com/mystroken/genese/issues"
   },
   "dependencies": {
-    "@mystroken/g": "^0.0.15"
+    "@mystroken/g": "^0.0.15",
+    "barba.js": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

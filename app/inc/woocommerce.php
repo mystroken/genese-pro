@@ -25,7 +25,7 @@ function genese_woocommerce_setup() {
 			'product_grid'          => array(
 				'default_rows'    => 3,
 				'min_rows'        => 1,
-				'default_columns' => 4,
+				'default_columns' => 3,
 				'min_columns'     => 1,
 				'max_columns'     => 6,
 			),
@@ -37,13 +37,15 @@ function genese_woocommerce_setup() {
 }
 add_action( 'after_setup_theme', 'genese_woocommerce_setup' );
 
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+
 /**
  * WooCommerce specific scripts & stylesheets.
  *
  * @return void
  */
 function genese_woocommerce_scripts() {
-	wp_enqueue_style( 'genese-woocommerce-style', get_template_directory_uri() . '/woocommerce.css', array(), _S_VERSION );
+	// wp_enqueue_style( 'genese-woocommerce-style', get_template_directory_uri() . '/woocommerce.css', array(), _S_VERSION );
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
@@ -57,7 +59,7 @@ function genese_woocommerce_scripts() {
 			font-style: normal;
 		}';
 
-	wp_add_inline_style( 'genese-woocommerce-style', $inline_font );
+	// wp_add_inline_style( 'genese-woocommerce-style', $inline_font );
 }
 add_action( 'wp_enqueue_scripts', 'genese_woocommerce_scripts' );
 
@@ -69,7 +71,7 @@ add_action( 'wp_enqueue_scripts', 'genese_woocommerce_scripts' );
  *
  * @link https://docs.woocommerce.com/document/disable-the-default-stylesheet/
  */
-add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+//add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
 /**
  * Add 'woocommerce-active' class to the body tag.
@@ -118,11 +120,11 @@ if ( ! function_exists( 'genese_woocommerce_wrapper_before' ) ) {
 	 */
 	function genese_woocommerce_wrapper_before() {
 		?>
-			<main id="primary" class="site-main">
+			<!-- <main id="primary" class="site-main"> -->
 		<?php
 	}
 }
-add_action( 'woocommerce_before_main_content', 'genese_woocommerce_wrapper_before' );
+// add_action( 'woocommerce_before_main_content', 'genese_woocommerce_wrapper_before' );
 
 if ( ! function_exists( 'genese_woocommerce_wrapper_after' ) ) {
 	/**
@@ -134,22 +136,15 @@ if ( ! function_exists( 'genese_woocommerce_wrapper_after' ) ) {
 	 */
 	function genese_woocommerce_wrapper_after() {
 		?>
-			</main><!-- #main -->
+			<!-- </main> -->
 		<?php
 	}
 }
-add_action( 'woocommerce_after_main_content', 'genese_woocommerce_wrapper_after' );
+// add_action( 'woocommerce_after_main_content', 'genese_woocommerce_wrapper_after' );
 
 /**
  * Sample implementation of the WooCommerce Mini Cart.
  *
- * You can add the WooCommerce Mini Cart to header.php like so ...
- *
-	<?php
-		if ( function_exists( 'genese_woocommerce_header_cart' ) ) {
-			genese_woocommerce_header_cart();
-		}
-	?>
  */
 
 if ( ! function_exists( 'genese_woocommerce_cart_link_fragment' ) ) {
@@ -182,14 +177,8 @@ if ( ! function_exists( 'genese_woocommerce_cart_link' ) ) {
 	function genese_woocommerce_cart_link() {
 		?>
 		<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'genese' ); ?>">
-			<?php
-			$item_count_text = sprintf(
-				/* translators: number of items in the mini cart. */
-				_n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'genese' ),
-				WC()->cart->get_cart_contents_count()
-			);
-			?>
-			<span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo esc_html( $item_count_text ); ?></span>
+			<span class="label"><?php esc_html_e( 'Cart', 'genese' ); ?></span>
+			<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
 		</a>
 		<?php
 	}

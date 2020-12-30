@@ -17,11 +17,11 @@
 		</a>
 	</div>
 </div>
-<header id="header" class="header">
+<header id="header" class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 	<div class="header__wrapper">
 		<div class="header__wrapper__left">
 			<div class="hamburger-wrapper">
-				<button type="button" class="hamburger" aria-label="<?php esc_html_e( 'Hamburger', 'genese' ); ?>">
+				<button id="hamburgerToggle" type="button" class="hamburger" aria-label="<?php esc_html_e( 'Hamburger', 'genese' ); ?>">
 					<span class="hamburger-box">
 						<span class="line line--1"></span>
 						<span class="line line--2"></span>
@@ -51,14 +51,17 @@
 			<?php } ?>
 		</div>
 		<div class="header__wrapper__right">
-			<div class="header__cart">
-				<a class="cart" href="<?php echo wc_get_cart_url(); ?>" title="<?php esc_html_e( 'View your shopping cart', 'genese' ); ?>">
-					<?php esc_html_e( 'Cart', 'genese' ); ?>
-					<span>
-						(<?php echo WC()->cart->get_cart_contents_count(); ?>)
-					</span>
-				</a>
-			</div>
+			<!-- <a class="cart" href="<?php echo wc_get_cart_url(); ?>" title="<?php esc_html_e( 'View your shopping cart', 'genese' ); ?>">
+				<?php esc_html_e( 'Cart', 'genese' ); ?>
+				<span>
+					(<?php echo WC()->cart->get_cart_contents_count(); ?>)
+				</span>
+			</a> -->
+			<?php
+				if ( function_exists( 'genese_woocommerce_header_cart' ) ) {
+					genese_woocommerce_header_cart();
+				}
+			?>
 		</div>
 	</div>
 </header>
@@ -75,5 +78,5 @@ if ( has_nav_menu( 'handheld' ) ) {
 			);
 		?>
 	</nav>
-	<?php
+<?php
 }

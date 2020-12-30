@@ -11,28 +11,28 @@
 
 ?>
 
-<footer id="footer" class="footer">
-	<nav id="footer-nav" class="footer-navigation" role="navigation" aria-label="<?php esc_html_e( 'Footer Navigation', 'genese' ); ?>">
-		<?php
-			wp_nav_menu(
-				array(
-					'theme_location'  => 'footer',
-					'container' => '',
-				)
-			);
-			?>
-	</nav>
-	<div class="site-info">
-		<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'genese' ) ); ?>">
+<footer id="footer" class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+	<div class="footer__inner">
+		<nav id="footer-nav" class="footer-navigation" role="navigation" aria-label="<?php esc_html_e( 'Footer Navigation', 'genese' ); ?>">
 			<?php
-			/* translators: %s: CMS name, i.e. WordPress. */
-			printf( esc_html__( 'Proudly powered by %s', 'genese' ), 'WordPress' );
-			?>
-		</a>
-		<span class="sep"> | </span>
+				wp_nav_menu(
+					array(
+						'theme_location'  => 'footer',
+						'container' => '',
+					)
+				);
+				?>
+		</nav>
+		<div class="footer__info">
+			Copyright &copy; <span itemprop="copyrightYear">2020</span>
+			<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Person">
+				<span itemprop="name">MR AFROPOLITAN</span>
+			</span>
+			<span class="sep"> - </span>
 			<?php
-			/* translators: 1: Theme name, 2: Theme author. */
-			printf( esc_html__( 'Theme: %1$s by %2$s.', 'genese' ), 'genese', '<a href="https://www.flexyla.com">FlexyLa Studio</a>' );
+				/* translators: 1: Theme name, 2: Theme author. */
+				printf( esc_html__( 'Site designed by %1$s', 'genese' ), '<a href="https://www.flexyla.com" target="_blank">FlexyLa Studio</a>' );
 			?>
-	</div><!-- .site-info -->
-</footer><!-- #footer -->
+		</div>
+	</div>
+</footer>

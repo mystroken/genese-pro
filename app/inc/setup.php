@@ -49,6 +49,11 @@ if ( ! function_exists( 'genese_setup' ) ) :
 		 */
 		add_theme_support( 'wp-block-styles' );
 
+		/**
+		 * Enable wide alignment feature.
+		 */
+		add_theme_support( 'align-wide' );
+
 		/*
 		 * Register menus
 		 *
@@ -117,6 +122,11 @@ if ( ! function_exists( 'genese_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'genese_setup' );
 
+
+/**
+ * Remove admin bar from frontend.
+ */
+add_filter( 'show_admin_bar', '__return_false', PHP_INT_MAX );
 
 
 /**

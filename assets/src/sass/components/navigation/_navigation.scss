@@ -34,8 +34,29 @@
   right: 0;
   bottom: 0;
   background: white;
-  z-index: 1000;
+  z-index: 98;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 4s;
   @media (min-width: $screen-medium-up) {
-    display: none;
+    display: none !important;
+  }
+
+  &.is-visible {
+    display: flex;
+    opacity: 1;
+  }
+
+  .menu {
+    padding-top: 11rem;
+  }
+
+  .menu-item a {
+    display: inline-block;
+    padding: .6875rem 0;
+    font-size: 1.125rem;
+    font-family: 'Plaid-XL', sans-serif;
+    letter-spacing: .078px;
+    text-transform: uppercase;
   }
 }

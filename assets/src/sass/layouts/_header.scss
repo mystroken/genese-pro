@@ -1,6 +1,27 @@
+.app-header {
+	position: absolute;
+	width: 100%;
+}
+
+.app-content {
+	margin-top: 1.875rem;
+	padding-top: 10rem;
+
+	.page-template-template-homepage & {
+		padding-top: 0;
+	}
+}
+
 .header {
+	position: relative;
+	top: 0;
   width: 100%;
+  z-index: 99;
   text-transform: uppercase;
+  font-family: 'Plaid-XL', sans-serif;
+  font-size: 0.625rem;
+	letter-spacing: .078px;
+	// border-bottom: 1px solid red;
 
   &__wrapper {
     @extend .container;
@@ -46,3 +67,19 @@
   }
 }
 
+.site-header-cart {
+	list-style: none;
+}
+
+.cart-contents .count {
+	display: inline-block;
+	padding: .25rem;
+	width: 16px;
+	height: 16px;
+	transform: translate3d(0,-30%,0);
+	line-height: 1;
+	background: black;
+	color: white;
+	border-radius: 50%;
+	font-size: .5rem;
+}

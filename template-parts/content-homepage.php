@@ -9,17 +9,24 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+	<div class="hero alignfull">
+		<div class="hero__media">
+			<video class="hero__video" autoplay muted loop>
+				<source src="/wp-content/uploads/2020/12/mrafropolitan-cover-video-compressed-2.mp4" type="video/mp4">
+			</video>
+		</div>
+		<div class="hero__content">
+			<h1 class="hero__title">
+				<span>Dress Good</span><br>
+				<span>Fell Good</span><br>
+				<span>Do Good</span>
+			</h1>
+		</div>
+	</div>
 
 	<?php
-	if ( ! is_front_page() ) :
-		?>
-		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		</header>
-		<?php
-	endif;
-
 	genese_post_thumbnail(); ?>
 
 	<div class="entry-content">
@@ -57,4 +64,4 @@
 			?>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
-</article><!-- #post-<?php the_ID(); ?> -->
+</div><!-- #post-<?php the_ID(); ?> -->

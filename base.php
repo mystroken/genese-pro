@@ -24,38 +24,31 @@
 
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> role="document" itemscope itemtype="http://schema.org/WebPage">
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="app">
+<div id="app" class="has-announcement" role="document" itemscope itemtype="http://schema.org/WebPage">
 
-	<?php get_header(); ?>
+	<section id="app-header" class="app-header">
+		<?php get_header(); ?>
+	</section>
 
-	<main id="main" class="main" role="main" itemprop="mainContentOfPage">
-		<div class="container">
+	<section id="app-content" class="app-content">
+		<main id="main" class="main" role="main" itemprop="mainContentOfPage">
 			<div id="content" class="content">
 				<?php
 
 					/*
-					 * Get the right WordPress template file.
-					 */
+					* Get the right WordPress template file.
+					*/
 					require genese_template_path();
 					?>
-			</div><!-- #content -->
-			<?php
+			</div>
+		</main>
+		<?php get_footer(); ?>
+	</section>
 
-				/*
-				 * Include the site sidebar.
-				 * Even if you don't need a sidebar, do not remove this line.
-				 */
-				get_sidebar();
-				?>
-		</div>
-	</main>
-
-	<?php get_footer(); ?>
-
-</div><!-- #app -->
-<div id="loader"></div><!-- #loader -->
+</div>
+<div id="loader"></div>
 <noscript><div class="issue-js"><?php echo __('Please enable JavaScript to view this website.', 'genese'); ?></div></noscript>
 
 <?php wp_footer(); ?>

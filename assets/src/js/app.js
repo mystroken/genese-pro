@@ -1,14 +1,27 @@
 /* eslint-disable no-undef */
-// document.body.style.background = 'maroon';
+// import Barba from 'barba.js';
+import initializeApp from './app/index';
 
 if ( typeof module === 'object' && module.hot ) {
 	module.hot.accept();
 }
 
-// `import.meta` is (proposed) ES standard: this test should work in ES enabled
-// environment, even when the hot plugin is not here (obviously, import.meta.hot
-// will be falsy in this case, and this HMR-specific block will be skipped)
-// if (import.meta.hot) {
-//   // accept hot updates (without any special treatment)
-//   import.meta.hot.accept()
-// }
+const app = initializeApp();
+
+// const Transition = Barba.BaseTransition.extend({
+//   start() {
+//     this.newContainerLoading.then(this.finish.bind(this));
+//   },
+
+//   finish() {
+//     // Remove the old container.
+//     this.done();
+//   },
+// });
+
+// Barba.Pjax.Dom.wrapperId = 'main';
+// Barba.Pjax.Dom.containerClass = 'content-wrapper';
+// Barba.Pjax.getTransition = () => Transition;
+// Barba.Pjax.start();
+
+window.App = app;
