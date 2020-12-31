@@ -7,7 +7,12 @@
   border: 0;
   cursor: pointer;
   outline: none !important;
-  background: transparent;
+	background: transparent !important;
+	color: currentColor !important;
+
+	&:hover {
+		background: transparent !important;
+	}
 
   &-wrapper {
     @media (min-width: $screen-medium-up) {
