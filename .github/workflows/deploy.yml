@@ -19,6 +19,6 @@ jobs:
         key: ${{ secrets.SSHKEY  }}
         port: ${{ secrets.PORT  }}
         script: cd ${{ secrets.PROJECT_PATH  }} && git pull
-    # clean install of your projects' deps. We use "npm ci" to avoid package lock changes
-    - run: npm ci
+    # Install node modules dependencies.
+    - run: npm install
     - run: npm run build
