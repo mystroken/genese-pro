@@ -1,6 +1,6 @@
 name: Deployment
 on:
-  # Trigger the workflow on push or pull request,
+  # Trigger the workflow on push,
   # but only for the main branch
   push:
     branches:
@@ -18,7 +18,6 @@ jobs:
         username: ${{ secrets.USERNAME  }}
         key: ${{ secrets.SSHKEY  }}
         port: ${{ secrets.PORT  }}
-        script: cd ${{ secrets.PROJECT_PATH  }} && git pull
-    # Install node modules dependencies.
-    - run: npm install
-    - run: npm run build
+        script: |
+          cd ${{ secrets.PROJECT_PATH  }} && git pull
+          npm install && npm run build

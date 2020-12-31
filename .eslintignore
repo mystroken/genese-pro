@@ -3,3 +3,5 @@ assets/scripts/**
 assets/config.js
 
 *.config.js
+
+.github/**
