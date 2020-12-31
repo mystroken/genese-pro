@@ -45,7 +45,11 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 )
  * @return void
  */
 function genese_woocommerce_scripts() {
-	// wp_enqueue_style( 'genese-woocommerce-style', get_template_directory_uri() . '/woocommerce.css', array(), _S_VERSION );
+	 wp_enqueue_style(
+	 	'genese-woocommerce-style',
+		get_template_directory_uri() . '/assets/dist/css/woocommerce.css',
+		array()
+	 );
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
@@ -175,10 +179,13 @@ if ( ! function_exists( 'genese_woocommerce_cart_link' ) ) {
 	 * @return void
 	 */
 	function genese_woocommerce_cart_link() {
+		$cart_count = WC()->cart->get_cart_contents_count() >= 10 ?
+			'9+' :
+			WC()->cart->get_cart_contents_count();
 		?>
 		<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'genese' ); ?>">
 			<span class="label"><?php esc_html_e( 'Cart', 'genese' ); ?></span>
-			<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
+			<span class="count"><?php echo wp_kses_data( $cart_count ); ?></span>
 		</a>
 		<?php
 	}
@@ -214,3 +221,8 @@ if ( ! function_exists( 'genese_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+
+/**
+ * Remove Add to cart button into loop.
+ */
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );

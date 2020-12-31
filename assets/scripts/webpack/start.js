@@ -13,6 +13,7 @@ const { PATHS, PROXY_TARGET } = require( '../../config' );
 
 
 const bsOptions = {
+	open: false,
 	proxy: {
 
 		// proxy local WP install

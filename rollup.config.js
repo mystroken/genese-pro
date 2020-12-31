@@ -63,11 +63,11 @@ export default [
 
   // // postcss
   {
-    input: './assets/src/postcss/main.js',
+    input: './assets/src/postcss/style.js',
     output: {
       sourcemap: !production,
       format,
-      file: './assets/dist/css/main.js',
+      file: './assets/dist/css/style.js',
     },
     plugins: [
       // PostCss should be used before commonjs
@@ -77,6 +77,30 @@ export default [
         hot: !production,
         sourceMap: !production,
         extract: 'style.css',
+        extensions: ['.scss', '.css'],
+        loaders: ['sass'],
+      }),
+      hot
+    ],
+    watch: { clearScreen: false },
+  },
+
+  // // postcss
+  {
+    input: './assets/src/postcss/woocommerce.js',
+    output: {
+      sourcemap: !production,
+      format,
+      file: './assets/dist/css/woocommerce.js',
+    },
+    plugins: [
+      // PostCss should be used before commonjs
+      // Or it will try to interpret the content of CSS
+      // file as JavaScript.
+      postcss({
+        hot: !production,
+        sourceMap: !production,
+        extract: 'woocommerce.css',
         extensions: ['.scss', '.css'],
         loaders: ['sass'],
       }),

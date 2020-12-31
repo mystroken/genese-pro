@@ -68,6 +68,7 @@ function getEntry() {
 	let proxyURL = `http://${HOST}:${PORT}`;
 	entry.app = [ PATHS.src( 'js', 'app.js' ) ];
 	entry.app.push( PATHS.src( 'sass', 'style.scss' ) );
+	entry.app.push( PATHS.src( 'sass', 'woocommerce.scss' ) );
 
 	/**
 	 * We do this to enable injection over SSL.
