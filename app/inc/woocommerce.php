@@ -184,7 +184,17 @@ if ( ! function_exists( 'genese_woocommerce_cart_link' ) ) {
 			WC()->cart->get_cart_contents_count();
 		?>
 		<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'genese' ); ?>">
-			<span class="label"><?php esc_html_e( 'Cart', 'genese' ); ?></span>
+			<span class="label">
+				<span class="label__icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="14.452" height="16" viewBox="0 0 14.452 16">
+						<g transform="translate(-1 -0.5)">
+							<path d="M14.419,5.042H2.032v9.375a1.037,1.037,0,0,0,1.032,1.042H13.387a1.037,1.037,0,0,0,1.032-1.042ZM1,4V14.417A2.074,2.074,0,0,0,3.065,16.5H13.387a2.074,2.074,0,0,0,2.065-2.083V4Z" transform="translate(0 0)" fill-rule="evenodd"/>
+							<path d="M8,1.5A2.5,2.5,0,0,0,5.5,4h-1a3.5,3.5,0,1,1,7,0h-1A2.5,2.5,0,0,0,8,1.5Z" transform="translate(0.226)"/>
+						</g>
+					</svg>
+				</span>
+				<span class="label__text"><?php esc_html_e( 'Cart', 'genese' ); ?></span>
+			</span>
 			<span class="count"><?php echo wp_kses_data( $cart_count ); ?></span>
 		</a>
 		<?php

@@ -12,7 +12,7 @@
 ?>
 <div class="announcement-bar">
 	<div class="announcement-bar__inner">
-		<a class="announcement-bar__link" href="<?php echo get_home_url(); ?>" >
+		<a class="announcement-bar__link" href="/boutique" >
 			<?php _e( 'Worldwide delivery 🌍', 'genese' ); ?>
 		</a>
 	</div>
@@ -51,12 +51,6 @@
 			<?php } ?>
 		</div>
 		<div class="header__wrapper__right">
-			<!-- <a class="cart" href="<?php echo wc_get_cart_url(); ?>" title="<?php esc_html_e( 'View your shopping cart', 'genese' ); ?>">
-				<?php esc_html_e( 'Cart', 'genese' ); ?>
-				<span>
-					(<?php echo WC()->cart->get_cart_contents_count(); ?>)
-				</span>
-			</a> -->
 			<?php
 				if ( function_exists( 'genese_woocommerce_header_cart' ) ) {
 					genese_woocommerce_header_cart();
